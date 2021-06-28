@@ -8,7 +8,7 @@ namespace UI.Upgrades
 
         public override void Upgrade()
         {
-            if (_playersMoney.Money >= Cost && _shooting.ShotDelay > 0.2)
+            if (_playersMoney.Money >= Cost && _shooting.ShotDelay >= Limit)
             {
                 _shooting.UpgradeShotDelay(UpgradeVolume);
                 _playersMoney.RemoveMoney(Cost);

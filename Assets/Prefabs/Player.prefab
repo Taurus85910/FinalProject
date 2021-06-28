@@ -184,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHeath: 15
   _restart: {fileID: 0}
+  _resetedPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8322814848440102692
 MonoBehaviour:
   m_ObjectHideFlags: 0

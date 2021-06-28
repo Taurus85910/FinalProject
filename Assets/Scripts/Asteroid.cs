@@ -34,7 +34,7 @@ public class Asteroid : MonoBehaviour
         _rigidbody.mass = _scale * 100;
         _damage = _scale;
         _pointReward = _scale * 10;
-        _moneyReward = _scale;
+        _moneyReward = _scale * 1000;
     }
     private void Start()
     {

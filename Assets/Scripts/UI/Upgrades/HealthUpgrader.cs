@@ -9,7 +9,7 @@ namespace UI.Upgrades
 
         public override void Upgrade()
         {
-            if (_playersMoney.Money >= Cost)
+            if (_playersMoney.Money >= Cost && _player.Health <= Limit)
             {
                 _player.UpgradeHealth((int) UpgradeVolume);
                 _playersMoney.RemoveMoney(Cost);

@@ -11,18 +11,32 @@ namespace PlayerScripts
     {
         [SerializeField] private int _maxHeath;
         [SerializeField] private Restart _restart;
-        
+        [SerializeField] private Vector3 _resetedPosition;
         public event UnityAction<int> OnHeathChanged; 
         private int _health;
         
-        public int Health => _health;
-        
+        public int Health
+        {
+            get { return _health; }
+        }
+
         private void Start()
         {
             HealthReset();
         }
-        private void OnEnable() => Restart.OnRestartButtonClick += HealthReset;
-        private void OnDisable() => Restart.OnRestartButtonClick -= HealthReset;
+        private void OnEnable()
+        {
+            Restart.OnRestartButtonClick += HealthReset;
+            Restart.OnRestartButtonClick += ResetPosition;
+            
+        }
+
+        private void OnDisable()
+        {
+            Restart.OnRestartButtonClick -= HealthReset;
+            Restart.OnRestartButtonClick -= ResetPosition;
+        }
+
         public void ApplyDamage(int damage)
         {
             _health -= damage;
@@ -36,6 +50,8 @@ namespace PlayerScripts
             }
             OnHeathChanged?.Invoke(_health);
         }
+        private void ResetPosition() => transform.position = _resetedPosition;
+
         private void HealthReset()
         {
             _health = _maxHeath;
@@ -46,8 +62,10 @@ namespace PlayerScripts
             _restart.SetActiveRestartScreen();
             _health = _maxHeath;
         }
-        public void UpgradeHealth(int upgradeVolume) => _maxHeath += upgradeVolume;
-        
+        public void UpgradeHealth(int upgradeVolume)
+        {
+            _maxHeath += upgradeVolume;
+        }
     }
 }
 
