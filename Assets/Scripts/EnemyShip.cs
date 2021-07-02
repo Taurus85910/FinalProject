@@ -5,6 +5,7 @@ using Player;
 using UI;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class EnemyShip : MonoBehaviour
@@ -20,17 +21,11 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private GameObject _effectTemplate;
     
     private Vector3 _movePoint;
-    private PlayersMoney _playersMoney;
-    private PlayersPoints _playersPoints;
     private int _heath;
 
-    private void Start()
-    {
-        _playersMoney = FindObjectOfType<PlayersMoney>();
-        _playersPoints = FindObjectOfType<PlayersPoints>();
-    }
-    
-     private void Update()
+    public event UnityAction<int, int> OnShipDestroy;
+
+    private void Update()
      {
          transform.position = Vector3.MoveTowards(transform.position, _movePoint, _speed * Time.deltaTime);
      }
@@ -54,8 +49,7 @@ public class EnemyShip : MonoBehaviour
      
      private void DestroyShip()
      {
-         _playersMoney.AddMoney(_moneyReward);
-         _playersPoints.AddPoints(_pointReward);
+         OnShipDestroy?.Invoke(_pointReward,_moneyReward);
          Instantiate(_effectTemplate,transform.position, Quaternion.identity);
          gameObject.SetActive(false);
      }

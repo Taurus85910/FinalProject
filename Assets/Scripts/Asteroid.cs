@@ -20,9 +20,9 @@ public class Asteroid : MonoBehaviour
     private int _damage;
     private int _health;
     private Rigidbody2D _rigidbody;
-    private PlayersMoney _playersMoney;
-    private PlayersPoints _playersPoints;
     private int _scale;
+
+    public event UnityAction<int, int> OnAsteroidDestroyed; 
     
     public int Damage => _damage;
 
@@ -37,12 +37,6 @@ public class Asteroid : MonoBehaviour
         _damage = _scale;
         _pointReward = _scale * 10;
         _moneyReward = _scale * 10;
-    }
-    
-    private void Start()
-    {
-        _playersMoney = FindObjectOfType<PlayersMoney>();
-        _playersPoints = FindObjectOfType<PlayersPoints>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -61,8 +55,7 @@ public class Asteroid : MonoBehaviour
     
     private void DestroyAsteroid()
     {
-        _playersMoney.AddMoney(_moneyReward);
-        _playersPoints.AddPoints(_pointReward);
+        OnAsteroidDestroyed?.Invoke(_pointReward,_moneyReward);
         gameObject.SetActive(false);
     }
 }

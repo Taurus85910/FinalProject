@@ -26,11 +26,18 @@ namespace Spawners
                     new Vector3(Random.Range(_xBorders.x, _xBorders.y), 80, 1), Quaternion.identity, _container);
                 tempAsteroid.GetComponent<SpriteRenderer>().sprite = _spritesArray[Random.Range(0, 7)];
                 tempAsteroid.AddComponent<CircleCollider2D>();
+                tempAsteroid.GetComponent<Asteroid>().OnAsteroidDestroyed += InvokeEvent;
                 ObjectPool.Add(tempAsteroid);
                 tempAsteroid.SetActive(false);
             }
         }
-        
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            ObjectPool.ForEach(asteroid => asteroid.GetComponent<Asteroid>().OnAsteroidDestroyed -= InvokeEvent);
+        }
+
         protected override IEnumerator SpawnPoolElement()
         {
             while (true)

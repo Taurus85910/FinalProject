@@ -72,12 +72,13 @@ GameObject:
   - component: {fileID: 8291819300741924687}
   - component: {fileID: 8291819300741924686}
   - component: {fileID: 8291819300741924683}
-  - component: {fileID: 8322814848440102692}
   - component: {fileID: 8291819300741924692}
   - component: {fileID: 8291819300741924682}
   - component: {fileID: 8291819300741924695}
-  - component: {fileID: 8291819300741924694}
   - component: {fileID: 1667347426863294439}
+  - component: {fileID: 959275373322954727}
+  - component: {fileID: 8291819300741924694}
+  - component: {fileID: 8322814848440102692}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -183,20 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHeath: 15
   _restart: {fileID: 0}
---- !u!114 &8322814848440102692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8291819300741924685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d26b9ab02487742a8dd2d7d5e6bb52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _addedPonitWalue: 2
-  _dealy: 1
 --- !u!114 &8291819300741924692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,19 +234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forcePower: 25
---- !u!114 &8291819300741924694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8291819300741924685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc819e32ab305c4585be7d8fe5a526d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moneyDisplay: {fileID: 0}
 --- !u!70 &1667347426863294439
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -276,6 +250,50 @@ CapsuleCollider2D:
   m_Offset: {x: 0.1619916, y: -0.11564636}
   m_Size: {x: 8.773707, y: 15.190643}
   m_Direction: 0
+--- !u!114 &959275373322954727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291819300741924685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaaabe9fed655b94bb5d055d8f3b955a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resetedPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &8291819300741924694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291819300741924685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc819e32ab305c4585be7d8fe5a526d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moneyDisplay: {fileID: 0}
+  _asteroidSpawner: {fileID: 0}
+  _shipSpawner: {fileID: 0}
+--- !u!114 &8322814848440102692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291819300741924685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d26b9ab02487742a8dd2d7d5e6bb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _addedPonitWalue: 2
+  _dealy: 1
+  _asteroidSpawner: {fileID: 0}
+  _shipSpawner: {fileID: 0}
 --- !u!1 &9182850197263168574
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Spawners
@@ -16,13 +18,23 @@ namespace Spawners
 
         protected override void Start()
         {
+            
             for (int i = 0; i < ObjectPool.Count; i++)
             {
                 ObjectPool[i] = Instantiate(ObjectPool[i], transform.position, Quaternion.Euler(180, 0, 0));
+                ObjectPool[i].GetComponent<EnemyShip>().OnShipDestroy += InvokeEvent;
                 ObjectPool[i].SetActive(false);
             }
-
             base.Start();
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            for (int i = 0; i < ObjectPool.Count; i++)
+            {
+                ObjectPool[i].GetComponent<EnemyShip>().OnShipDestroy -= InvokeEvent;
+            }
         }
 
         protected override IEnumerator SpawnPoolElement()

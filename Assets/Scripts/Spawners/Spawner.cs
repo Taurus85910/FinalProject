@@ -2,19 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Spawners
 {
     public abstract class Spawner : MonoBehaviour
     {
         [SerializeField] protected List<GameObject> ObjectPool = new List<GameObject>();
-
-        private void OnEnable()
+        
+        public List<GameObject> GetList => ObjectPool;
+        
+        public event UnityAction<int, int> OnElementDestroyed;
+        
+        protected void OnEnable()
         {
             Restart.OnRestartButtonClicked += PoolRestart;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             Restart.OnRestartButtonClicked -= PoolRestart;
         }
@@ -30,6 +35,11 @@ namespace Spawners
             {
                 poolElement.SetActive(false);
             }
+        }
+        
+        protected void InvokeEvent(int points,int money)
+        {
+            OnElementDestroyed?.Invoke(points,money);
         }
 
         protected abstract IEnumerator SpawnPoolElement();
