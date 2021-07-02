@@ -8,32 +8,38 @@ using UnityEngine.Events;
 
 public class Shooting : MonoBehaviour
 {
-    [SerializeField] private GameObject _bulletTemp;
+    [SerializeField] private GameObject _bulletTemplate;
     [SerializeField] private float _shotDelay;
     [SerializeField] private int _capacity;
     [SerializeField] private GameObject _tempContainer;
     
-    private List<GameObject> _bulletPool = new List<GameObject>();
+    private readonly List<GameObject> _bulletPool = new List<GameObject>();
     private List<Transform> _shootPoints = new List<Transform>();
     
     public List<GameObject> BulletPool => _bulletPool;
     public float ShotDelay => _shotDelay;
-    
-    public void UpgradeShotDelay(float shotDelayVolume) => _shotDelay -= shotDelayVolume;
+
+    public void UpgradeShotDelay(float shotDelayVolume)
+    {
+        _shotDelay -= shotDelayVolume;
+    }
 
     private void OnEnable()
     {
-        Restart.OnRestartButtonClick += PoolRestart;
+        Restart.OnRestartButtonClicked += PoolRestart;
         StartCoroutine(Shot());
     }
 
-    private void OnDisable() => Restart.OnRestartButtonClick -= PoolRestart;
+    private void OnDisable()
+    {
+        Restart.OnRestartButtonClicked -= PoolRestart;
+    }
 
     private void PoolRestart()
     {
-        foreach (var i in _bulletPool)
+        foreach (var bullet in _bulletPool)
         {
-            i.SetActive(false);
+            bullet.SetActive(false);
         }
     }
 
@@ -42,40 +48,43 @@ public class Shooting : MonoBehaviour
         GameObject container = Instantiate(_tempContainer);
         for (int i = 0; i < _capacity; i++)
         {
-            GameObject temp = Instantiate(_bulletTemp,gameObject.transform.position,Quaternion.identity,container.transform);
+            GameObject temp = Instantiate(_bulletTemplate,gameObject.transform.position,Quaternion.identity,container.transform);
             temp.SetActive(false);
             _bulletPool.Add(temp);
         }
         InitShotPoints();
     }
+    
     public void InitShotPoints()
     {
         _shootPoints = new List<Transform>();
-        foreach (Transform i in transform)
+        foreach (Transform child in transform)
         {
-            if (i.gameObject.activeSelf)
-            _shootPoints.Add(i);
+            if (child.gameObject.activeSelf)
+            _shootPoints.Add(child);
         }
     }
+    
     private IEnumerator Shot()
     {
         while (true)
         {
-            foreach (var i in _shootPoints)
+            foreach (var shootPoint in _shootPoints)
             {
-                PoolTaken(i);
+                PoolTaken(shootPoint);
             }
             yield return new WaitForSeconds(_shotDelay);
         }
     }
+    
     private void PoolTaken(Transform transform)
     {
-        foreach (var i in _bulletPool)
+        foreach (GameObject bullet in _bulletPool)
         {
-            if (i.activeSelf == false)
+            if (bullet.activeSelf == false)
             {
-                i.SetActive(true);
-                i.transform.position = transform.position;
+                bullet.SetActive(true);
+                bullet.transform.position = transform.position;
                 break;
             }
         }  

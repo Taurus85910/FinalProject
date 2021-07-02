@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8928689903889003988}
   - component: {fileID: 4424494951889804404}
-  - component: {fileID: -4397128980214694775}
   - component: {fileID: 8011355973178617959}
+  - component: {fileID: 4909312774777692827}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: Untagged
@@ -85,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4397128980214694775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350968553474538946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde18264d92e7bc4a82e0dd9713e5718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 10
-  _speed: 150
-  _forcePower: 5
-  _isEnemyBullet: 0
 --- !u!61 &8011355973178617959
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +111,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9564357, y: 0.98360664}
   m_EdgeRadius: 0
+--- !u!114 &4909312774777692827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350968553474538946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78fabda5df3e25a409ef55fbf7d29962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5
+  _speed: 100
+  _forcePower: 5

@@ -29,9 +29,9 @@ namespace Spawners
                 ObjectPool.Add(tempAsteroid);
                 tempAsteroid.SetActive(false);
             }
-
         }
-        protected override IEnumerator SpawnPool()
+        
+        protected override IEnumerator SpawnPoolElement()
         {
             while (true)
             {
@@ -44,7 +44,6 @@ namespace Spawners
                         break;
                     }
                 }
-
                 yield return new WaitForSeconds(Random.Range(_spawnDelayBorders.x, _spawnDelayBorders.y));
             }
         }

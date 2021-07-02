@@ -10,7 +10,11 @@ public class ScrollBackGround : MonoBehaviour
     [SerializeField] private float _speed;
     private RawImage _rawImage;
     private float _yPos;
-    private void Start() => _rawImage = GetComponent<RawImage>();
+    
+    private void Start()
+    {
+        _rawImage = GetComponent<RawImage>();
+    }
 
     private void Update()
     {

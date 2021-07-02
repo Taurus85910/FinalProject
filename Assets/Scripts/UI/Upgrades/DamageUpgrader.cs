@@ -8,13 +8,13 @@ namespace UI.Upgrades
 
         public override void Upgrade()
         {
-            if (_playersMoney.Money >= Cost && _shooting.BulletPool[1].GetComponent<Bullet>().Damage <= Limit)
+            if (PlayersMoney.Money >= Cost && _shooting.BulletPool[1].GetComponent<Bullet>().Damage <= Limit)
             {
                 foreach (GameObject i in _shooting.BulletPool)
                 {
-                    i.GetComponent<Bullet>().UpgradeDamage((int) UpgradeVolume);
+                    i.GetComponent<Bullet>().UpgradeDamage((int) Mathf.Abs(UpgradeVolume));
                 }
-                _playersMoney.RemoveMoney(Cost);
+                PlayersMoney.RemoveMoney(Cost);
             }
         }
     }

@@ -70,11 +70,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7020470390815725322}
   - component: {fileID: 7020470390815725325}
-  - component: {fileID: 7020470390815725324}
   - component: {fileID: 7020470390815725323}
   - component: {fileID: 4439530102015973933}
   - component: {fileID: -380797759801627575}
-  - component: {fileID: 437668877219419765}
+  - component: {fileID: 2001064994375898200}
   m_Layer: 0
   m_Name: s3
   m_TagString: Untagged
@@ -150,40 +149,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7020470390815725324
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020470390815725327}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 17.92, y: 17.92}
-    newSize: {x: 17.92, y: 17.92}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.32, y: -5.7}
-      - {x: 0.21, y: 1.42}
-      - {x: 0.78999996, y: -6.16}
-      - {x: 4.5899997, y: -2.02}
-      - {x: 0.13, y: 6.6299996}
-      - {x: -4.0299997, y: -1.91}
-      - {x: -0.32, y: -5.93}
-    - - {x: -1.15, y: 0.38}
-      - {x: -1.14, y: 0.31}
 --- !u!114 &7020470390815725323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62001dcfa3756324bb7e0f5a914b63bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletTemp: {fileID: 7708976163911728472, guid: f99d1897c57224f47a1802ce5293cbfe, type: 3}
+  _bulletTemplate: {fileID: 7708976163911728472, guid: f99d1897c57224f47a1802ce5293cbfe, type: 3}
   _shotDelay: 1
   _capacity: 6
   _tempContainer: {fileID: 8620447887853161518, guid: a0b2811f6e4d4b34a86b058fe7a4a088, type: 3}
@@ -219,6 +184,7 @@ MonoBehaviour:
   _moveDelay: 1
   _moneyReward: 80
   _pointReward: 200
+  _effectTemplate: {fileID: 2343400033600579260, guid: 77795c53e9a3ddb4cb5a7bfe969493e1, type: 3}
 --- !u!50 &-380797759801627575
 Rigidbody2D:
   serializedVersion: 4
@@ -239,17 +205,20 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &437668877219419765
-MonoBehaviour:
+  m_Constraints: 7
+--- !u!70 &2001064994375898200
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7020470390815725327}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6876803ba35184bf9b6a393e33a2f264, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tolerance: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.27372235, y: 0.24332683}
+  m_Size: {x: 5.9370117, y: 12.567058}
+  m_Direction: 0

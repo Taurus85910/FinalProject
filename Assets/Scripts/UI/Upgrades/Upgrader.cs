@@ -1,4 +1,4 @@
-using PlayerScripts;
+using Player;
 using UnityEngine;
 
 namespace UI.Upgrades
@@ -7,7 +7,7 @@ namespace UI.Upgrades
     {
         [SerializeField] protected int Cost;
         [SerializeField] protected float UpgradeVolume;
-        [SerializeField] protected PlayersMoney _playersMoney;
+        [SerializeField] protected PlayersMoney PlayersMoney;
         [SerializeField] protected float Limit;
 
         public abstract void Upgrade();

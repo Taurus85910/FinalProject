@@ -9,10 +9,20 @@ namespace Spawners
     {
         [SerializeField] protected List<GameObject> ObjectPool = new List<GameObject>();
 
-        private void OnEnable() => Restart.OnRestartButtonClick += PoolRestart;
-        private void OnDisable() => Restart.OnRestartButtonClick -= PoolRestart;
+        private void OnEnable()
+        {
+            Restart.OnRestartButtonClicked += PoolRestart;
+        }
 
-        protected virtual void Start() => StartCoroutine(SpawnPool());
+        private void OnDisable()
+        {
+            Restart.OnRestartButtonClicked -= PoolRestart;
+        }
+
+        protected virtual void Start()
+        {
+            StartCoroutine(SpawnPoolElement());
+        }
 
         private void PoolRestart()
         {
@@ -22,6 +32,6 @@ namespace Spawners
             }
         }
 
-        protected abstract IEnumerator SpawnPool();
+        protected abstract IEnumerator SpawnPoolElement();
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using PlayerScripts;
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +17,7 @@ namespace UI
       {
          _playersMoney.OnMoneyChanged += ChangeValue;
       }
+      
       private void OnDisable()
       {
          _playersMoney.OnMoneyChanged -= ChangeValue;

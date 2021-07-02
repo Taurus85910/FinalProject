@@ -16,6 +16,9 @@ namespace UI
             Text = GetComponent<Text>();
         }
 
-        protected void ChangeValue(int value) => Text.text = value.ToString();
+        protected void ChangeValue(int value)
+        {
+            Text.text = value.ToString();
+        }
     }
 }

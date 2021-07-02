@@ -25,7 +25,7 @@ namespace Spawners
             base.Start();
         }
 
-        protected override IEnumerator SpawnPool()
+        protected override IEnumerator SpawnPoolElement()
         {
             while (true)
             {

@@ -13,10 +13,10 @@ namespace UI.Upgrades
         
         public override void Upgrade()
         {
-            if (_playersMoney.Money >= Cost)
+            if (PlayersMoney.Money >= Cost)
             {
                 _shotPoint.SetActive(true);
-                _playersMoney.RemoveMoney(Cost);
+                PlayersMoney.RemoveMoney(Cost);
                 _shooting.InitShotPoints();
                 gameObject.SetActive(false);
             }

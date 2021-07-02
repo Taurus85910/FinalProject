@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.80811393
       objectReference: {fileID: 0}
+    - target: {fileID: 5894885543222422312, guid: d7de724c3d4ff634da02c162b05dacc3, type: 3}
+      propertyPath: _speed
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894885543222422312, guid: d7de724c3d4ff634da02c162b05dacc3, type: 3}
+      propertyPath: _damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894885543222422312, guid: d7de724c3d4ff634da02c162b05dacc3, type: 3}
+      propertyPath: _forcePower
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 6720890215074016598, guid: d7de724c3d4ff634da02c162b05dacc3, type: 3}
       propertyPath: _speed
       value: -95

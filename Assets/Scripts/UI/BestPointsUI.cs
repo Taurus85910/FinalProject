@@ -1,4 +1,4 @@
-using PlayerScripts;
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +10,9 @@ namespace UI
         [SerializeField] private PlayersPoints _playersPoints;
         [SerializeField] private Text _textField;
 
-        private void OnEnable() => _textField.text = $"{_text} {_playersPoints.BestPoints}";
+        private void OnEnable()
+        {
+            _textField.text = $"{_text} {_playersPoints.BestPoints}";
+        }
     }
 }

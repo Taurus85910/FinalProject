@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using PlayerScripts;
+using Player;
 using UI;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,6 +14,7 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private Vector2 _GravityScaleBorders;
     [SerializeField] private int _minScale;
     [SerializeField] private int _maxScale;
+    
     private int _pointReward;
     private int _moneyReward;
     private int _damage;
@@ -24,6 +25,7 @@ public class Asteroid : MonoBehaviour
     private int _scale;
     
     public int Damage => _damage;
+
     private void OnEnable()
     {
         _scale = Random.Range(_minScale, _maxScale);
@@ -36,11 +38,13 @@ public class Asteroid : MonoBehaviour
         _pointReward = _scale * 10;
         _moneyReward = _scale * 10;
     }
+    
     private void Start()
     {
         _playersMoney = FindObjectOfType<PlayersMoney>();
         _playersPoints = FindObjectOfType<PlayersPoints>();
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.TryGetComponent(out Bullet bullet))
@@ -50,11 +54,12 @@ public class Asteroid : MonoBehaviour
             _rigidbody.gravityScale -= bullet.ForcePower;
 
             if (_health <= 0)
-                OnAsteroidDestroy();
+                DestroyAsteroid();
             bullet.gameObject.SetActive(false);
         }
     }
-    private void OnAsteroidDestroy()
+    
+    private void DestroyAsteroid()
     {
         _playersMoney.AddMoney(_moneyReward);
         _playersPoints.AddPoints(_pointReward);
