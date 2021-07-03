@@ -31,13 +31,13 @@ public class Shooting : MonoBehaviour
 
     private void OnEnable()
     {
-        Restart.OnRestartButtonClicked += PoolRestart;
+        Restart.OnRestartButtonClick += PoolRestart;
         StartCoroutine(Shot());
     }
 
     private void OnDisable()
     {
-        Restart.OnRestartButtonClicked -= PoolRestart;
+        Restart.OnRestartButtonClick -= PoolRestart;
     }
 
     private void PoolRestart()

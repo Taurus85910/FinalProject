@@ -10,19 +10,19 @@ public class Restart : MonoBehaviour
 {
     [SerializeField] private GameObject _restartScreen;
     
-    public static event UnityAction OnRestartButtonClicked;
+    public static event UnityAction OnRestartButtonClick;
     
     public void SetActiveRestartScreen()
     {
         Time.timeScale = 0;
-        OnRestartButtonClicked?.Invoke();
+        OnRestartButtonClick?.Invoke();
         _restartScreen.SetActive(true);
     }
 
     public void Restarting()
     {
         _restartScreen.SetActive(false);
-        OnRestartButtonClicked?.Invoke();
+        OnRestartButtonClick?.Invoke();
         Time.timeScale = 1;
     }
 }

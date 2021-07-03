@@ -16,12 +16,12 @@ namespace Spawners
         
         protected void OnEnable()
         {
-            Restart.OnRestartButtonClicked += PoolRestart;
+            Restart.OnRestartButtonClick += PoolRestart;
         }
 
         protected virtual void OnDisable()
         {
-            Restart.OnRestartButtonClicked -= PoolRestart;
+            Restart.OnRestartButtonClick -= PoolRestart;
         }
 
         protected virtual void Start()
