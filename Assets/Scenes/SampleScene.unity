@@ -758,6 +758,7 @@ MonoBehaviour:
   - {fileID: -8220646870582796821, guid: 4ad94cb493a99274c81787026f390571, type: 3}
   _capacity: 16
   _container: {fileID: 322450900}
+  _spawnPosition: {x: 80, y: 1}
 --- !u!4 &288811407
 Transform:
   m_ObjectHideFlags: 0
@@ -2349,9 +2350,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cost: 100
   UpgradeVolume: 1
-  PlayersMoney: {fileID: 0}
+  PlayersMoney: {fileID: 1278785522}
   Limit: 999
-  _playerHealth: {fileID: 0}
+  _playerHealth: {fileID: 1278785519}
 --- !u!114 &1198731421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2891,7 +2892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cost: 200
   UpgradeVolume: 1
-  PlayersMoney: {fileID: 0}
+  PlayersMoney: {fileID: 1278785522}
   Limit: 50
   _shooting: {fileID: 1278785520}
 --- !u!1 &1472419050
@@ -3332,7 +3333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cost: 500
   UpgradeVolume: 0.1
-  PlayersMoney: {fileID: 0}
+  PlayersMoney: {fileID: 1278785522}
   Limit: 0.2
   _shooting: {fileID: 1278785520}
 --- !u!1 &1748686483
@@ -3652,7 +3653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cost: 1000
   UpgradeVolume: 1
-  PlayersMoney: {fileID: 0}
+  PlayersMoney: {fileID: 1278785522}
   Limit: 0
   _shotPoint: {fileID: 1422001215}
   _shooting: {fileID: 1278785520}
@@ -3832,6 +3833,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 959275373322954727, guid: f5b7c0e7e6c57a9449fe5c3d9e413aa0, type: 3}
+      propertyPath: _resetPosition.y
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 959275373322954727, guid: f5b7c0e7e6c57a9449fe5c3d9e413aa0, type: 3}
+      propertyPath: _resetPosition.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8291819300741924680, guid: f5b7c0e7e6c57a9449fe5c3d9e413aa0, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -16,8 +16,13 @@ public class Shooting : MonoBehaviour
     private readonly List<GameObject> _bulletPool = new List<GameObject>();
     private List<Transform> _shootPoints = new List<Transform>();
     
-    public List<GameObject> BulletPool => _bulletPool;
     public float ShotDelay => _shotDelay;
+    public int BulletDamage => _bulletPool[1].GetComponent<Bullet>().Damage;
+
+    public void UpgradeDamage(int upgradeVolume)
+    {
+        _bulletPool.ForEach(bullet => bullet.GetComponent<Bullet>().UpgradeDamage(upgradeVolume));
+    }
 
     public void UpgradeShotDelay(float shotDelayVolume)
     {

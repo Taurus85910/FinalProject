@@ -97,9 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331726b37cf380741bbcfd230ab184a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GravityScaleBorders: {x: 3, y: 5}
+  _gravityScaleBorders: {x: 3, y: 10}
   _minScale: 1
   _maxScale: 3
+  _healthModifier: 20
+  _massModifier: 100
+  _pointRewardModifier: 10
+  _moneyRewardModifier: 10
 --- !u!50 &-849635366791199948
 Rigidbody2D:
   serializedVersion: 4

@@ -16,15 +16,16 @@ namespace Spawners
         [SerializeField] private Sprite[] _spritesArray;
         [SerializeField] private int _capacity;
         [SerializeField] private Transform _container;
-
+        [SerializeField] private Vector2 _spawnPosition;
+        
         protected override void Start()
         {
             base.Start();
             for (int i = 0; i < _capacity; i++)
             {
                 GameObject tempAsteroid = Instantiate(_asteroidTemp,
-                    new Vector3(Random.Range(_xBorders.x, _xBorders.y), 80, 1), Quaternion.identity, _container);
-                tempAsteroid.GetComponent<SpriteRenderer>().sprite = _spritesArray[Random.Range(0, 7)];
+                    new Vector3(Random.Range(_xBorders.x, _xBorders.y), 0, 0), Quaternion.identity, _container);
+                tempAsteroid.GetComponent<SpriteRenderer>().sprite = _spritesArray[Random.Range(0, _spritesArray.Length-1)];
                 tempAsteroid.AddComponent<CircleCollider2D>();
                 tempAsteroid.GetComponent<Asteroid>().OnAsteroidDestroyed += InvokeEvent;
                 ObjectPool.Add(tempAsteroid);
@@ -47,7 +48,7 @@ namespace Spawners
                     foreach (GameObject a in ObjectPool.Where(a => a.activeSelf == false))
                     {
                         a.SetActive(true);
-                        a.transform.position = new Vector3(Random.Range(_xBorders.x, _xBorders.y), 80, 1);
+                        a.transform.position = new Vector3(Random.Range(_xBorders.x, _xBorders.y), _spawnPosition.x, _spawnPosition.y);
                         break;
                     }
                 }

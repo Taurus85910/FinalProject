@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletTemplate: {fileID: 350968553474538946, guid: bfb09609232d5a54fbee24b11897450a, type: 3}
-  _shotDelay: 1
+  _shotDelay: 0.8
   _capacity: 24
   _tempContainer: {fileID: 8620447887853161518, guid: a0b2811f6e4d4b34a86b058fe7a4a088, type: 3}
 --- !u!50 &8291819300741924682

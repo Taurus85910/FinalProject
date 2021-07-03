@@ -11,9 +11,13 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Asteroid : MonoBehaviour
 {
-    [SerializeField] private Vector2 _GravityScaleBorders;
+    [SerializeField] private Vector2 _gravityScaleBorders;
     [SerializeField] private int _minScale;
     [SerializeField] private int _maxScale;
+    [SerializeField] private int _healthModifier;
+    [SerializeField] private int _massModifier;
+    [SerializeField] private int _pointRewardModifier;
+    [SerializeField] private int _moneyRewardModifier;
     
     private int _pointReward;
     private int _moneyReward;
@@ -30,13 +34,13 @@ public class Asteroid : MonoBehaviour
     {
         _scale = Random.Range(_minScale, _maxScale);
         transform.localScale = new Vector3(_scale, _scale, 1);
-        _health = _scale * 20;
+        _health = _scale * _healthModifier;
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _rigidbody.gravityScale = Random.Range(_GravityScaleBorders.x, _GravityScaleBorders.y) / (Mathf.Log(_scale) + 1);
-        _rigidbody.mass = _scale * 100;
+        _rigidbody.gravityScale = Random.Range(_gravityScaleBorders.x, _gravityScaleBorders.y) / (Mathf.Log(_scale) + 1);
+        _rigidbody.mass = _scale * _massModifier;
         _damage = _scale;
-        _pointReward = _scale * 10;
-        _moneyReward = _scale * 10;
+        _pointReward = _scale * _pointRewardModifier;
+        _moneyReward = _scale * _moneyRewardModifier;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
