@@ -8,20 +8,18 @@ namespace Spawners
 {
     public abstract class Spawner: MonoBehaviour 
     {
-        [SerializeField] protected List<GameObject> ObjectPool = new List<GameObject>();
-        
-        public List<GameObject> GetList => ObjectPool;
+        [SerializeField] protected ObjectPool Pool;
         
         public event UnityAction<int, int> ElementDestroyed;
         
         protected void OnEnable()
         {
-            Restart.RestartButtonClicked += PoolRestart;
+            Restart.RestartButtonClicked += Pool.OnRestartButtonClicked;
         }
 
         protected virtual void OnDisable()
         {
-            Restart.RestartButtonClicked -= PoolRestart;
+            Restart.RestartButtonClicked -= Pool.OnRestartButtonClicked;
         }
 
         protected virtual void Start()
@@ -29,13 +27,7 @@ namespace Spawners
             StartCoroutine(SpawnPoolElement());
         }
 
-        private void PoolRestart()
-        {
-            foreach (GameObject poolElement in ObjectPool)
-            {
-                poolElement.SetActive(false);
-            }
-        }
+        
         
         protected void InvokeEvent(int points,int money)
         {

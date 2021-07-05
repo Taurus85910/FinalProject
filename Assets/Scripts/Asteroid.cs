@@ -35,7 +35,7 @@ public class Asteroid : MonoBehaviour
         _scale = Random.Range(_minScale, _maxScale);
         transform.localScale = new Vector3(_scale, _scale, 1);
         _health = _scale * _healthModifier;
-        _rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.gravityScale = Random.Range(_gravityScaleBorders.x, _gravityScaleBorders.y) / (Mathf.Log(_scale) + 1);
         _rigidbody.mass = _scale * _massModifier;
         _damage = _scale;

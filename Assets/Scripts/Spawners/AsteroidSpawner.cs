@@ -28,7 +28,7 @@ namespace Spawners
                 tempAsteroid.GetComponent<SpriteRenderer>().sprite = _spritesArray[Random.Range(0, _spritesArray.Length-1)];
                 tempAsteroid.AddComponent<CircleCollider2D>();
                 tempAsteroid.GetComponent<Asteroid>().AsteroidDestroyed += InvokeEvent;
-                ObjectPool.Add(tempAsteroid);
+                Pool.ObjectList.Add(tempAsteroid);
                 tempAsteroid.SetActive(false);
             }
         }
@@ -36,7 +36,7 @@ namespace Spawners
         protected override void OnDisable()
         {
             base.OnDisable();
-            ObjectPool.ForEach(asteroid => asteroid.GetComponent<Asteroid>().AsteroidDestroyed -= InvokeEvent);
+            Pool.ObjectList.ForEach(asteroid => asteroid.GetComponent<Asteroid>().AsteroidDestroyed -= InvokeEvent);
         }
 
         protected override IEnumerator SpawnPoolElement()
@@ -45,7 +45,7 @@ namespace Spawners
             {
                 for (int i = 0; i < Random.Range(_countBorders.x, _countBorders.y); i++)
                 {
-                    foreach (GameObject asteroid in ObjectPool.Where(asteroid => !asteroid.activeSelf))
+                    foreach (GameObject asteroid in  Pool.ObjectList.Where(asteroid => !asteroid.activeSelf))
                     {
                         asteroid.SetActive(true);
                         asteroid.transform.position = new Vector3(Random.Range(_xBorders.x, _xBorders.y), _spawnPosition.x, _spawnPosition.y);

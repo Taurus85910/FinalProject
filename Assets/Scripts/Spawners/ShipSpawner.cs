@@ -19,11 +19,11 @@ namespace Spawners
         protected override void Start()
         {
             
-            for (int i = 0; i < ObjectPool.Count; i++)
+            for (int i = 0; i <  Pool.ObjectList.Count; i++)
             {
-                ObjectPool[i] = Instantiate(ObjectPool[i], transform.position, Quaternion.Euler(180, 0, 0));
-                ObjectPool[i].GetComponent<EnemyShip>().ShipDestroyed += InvokeEvent;
-                ObjectPool[i].SetActive(false);
+                Pool.ObjectList[i] = Instantiate( Pool.ObjectList[i], transform.position, Quaternion.Euler(180, 0, 0));
+                Pool.ObjectList[i].GetComponent<EnemyShip>().ShipDestroyed += InvokeEvent;
+                Pool.ObjectList[i].SetActive(false);
             }
             base.Start();
         }
@@ -31,9 +31,9 @@ namespace Spawners
         protected override void OnDisable()
         {
             base.OnDisable();
-            for (int i = 0; i < ObjectPool.Count; i++)
+            for (int i = 0; i <  Pool.ObjectList.Count; i++)
             {
-                ObjectPool[i].GetComponent<EnemyShip>().ShipDestroyed -= InvokeEvent;
+                Pool.ObjectList[i].GetComponent<EnemyShip>().ShipDestroyed -= InvokeEvent;
             }
         }
 
@@ -41,9 +41,9 @@ namespace Spawners
         {
             while (true)
             {
-                int shipNum = Random.Range(0, ObjectPool.Count);
-                ObjectPool[shipNum].SetActive(true);
-                ObjectPool[shipNum].transform.position = _spawnPosition;
+                int shipNum = Random.Range(0,  Pool.ObjectList.Count);
+                Pool.ObjectList[shipNum].SetActive(true);
+                Pool.ObjectList[shipNum].transform.position = _spawnPosition;
                 yield return new WaitForSeconds(_spawnDelay + Random.Range(-_chaoticModifier, _chaoticModifier));
             }
         }

@@ -31,16 +31,16 @@ public class Shooting : MonoBehaviour
 
     private void OnEnable()
     {
-        Restart.RestartButtonClicked += PoolRestart;
+        Restart.RestartButtonClicked += OnRestartButtonClicked;
         StartCoroutine(Shot());
     }
 
     private void OnDisable()
     {
-        Restart.RestartButtonClicked -= PoolRestart;
+        Restart.RestartButtonClicked -= OnRestartButtonClicked;
     }
 
-    private void PoolRestart()
+    private void OnRestartButtonClicked()
     {
         foreach (var bullet in _bulletPool)
         {
