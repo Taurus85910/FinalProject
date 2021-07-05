@@ -12,7 +12,7 @@ namespace Spawners
         
         public List<GameObject> GetList => ObjectPool;
         
-        public event UnityAction<int, int> OnElementDestroyed;
+        public event UnityAction<int, int> ElementDestroyed;
         
         protected void OnEnable()
         {
@@ -39,7 +39,7 @@ namespace Spawners
         
         protected void InvokeEvent(int points,int money)
         {
-            OnElementDestroyed?.Invoke(points,money);
+            ElementDestroyed?.Invoke(points,money);
         }
 
         protected abstract IEnumerator SpawnPoolElement();

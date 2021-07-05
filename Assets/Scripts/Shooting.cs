@@ -65,8 +65,8 @@ public class Shooting : MonoBehaviour
         _shootPoints = new List<Transform>();
         foreach (Transform child in transform)
         {
-            if (child.gameObject.activeSelf)
-            _shootPoints.Add(child);
+            if (child.gameObject.activeSelf) 
+                _shootPoints.Add(child);
         }
     }
     

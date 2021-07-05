@@ -13,12 +13,12 @@ namespace UI
 
         private void OnEnable()
         {
-            _playerHealth.OnHeathChanged += ChangeHealth;
+            _playerHealth.HeathChanged += ChangeHealth;
         }
 
         private void OnDisable()
         {
-            _playerHealth.OnHeathChanged -= ChangeHealth;
+            _playerHealth.HeathChanged -= ChangeHealth;
         }
 
         private void Start()

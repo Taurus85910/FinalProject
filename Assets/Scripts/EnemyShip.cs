@@ -23,7 +23,7 @@ public class EnemyShip : MonoBehaviour
     private Vector3 _movePoint;
     private int _heath;
 
-    public event UnityAction<int, int> OnShipDestroy;
+    public event UnityAction<int, int> ShipDestroyed;
 
     private void Update()
      {
@@ -49,7 +49,7 @@ public class EnemyShip : MonoBehaviour
      
      private void DestroyShip()
      {
-         OnShipDestroy?.Invoke(_pointReward,_moneyReward);
+         ShipDestroyed?.Invoke(_pointReward,_moneyReward);
          Instantiate(_effectTemplate,transform.position, Quaternion.identity);
          gameObject.SetActive(false);
      }

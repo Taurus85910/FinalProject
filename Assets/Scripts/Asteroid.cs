@@ -28,7 +28,7 @@ public class Asteroid : MonoBehaviour
     
     public int Damage => _damage;
     
-    public event UnityAction<int, int> OnAsteroidDestroyed;
+    public event UnityAction<int, int> AsteroidDestroyed;
 
     private void OnEnable()
     {
@@ -59,7 +59,7 @@ public class Asteroid : MonoBehaviour
     
     private void DestroyAsteroid()
     {
-        OnAsteroidDestroyed?.Invoke(_pointReward,_moneyReward);
+        AsteroidDestroyed?.Invoke(_pointReward,_moneyReward);
         gameObject.SetActive(false);
     }
 }

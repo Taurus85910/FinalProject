@@ -14,12 +14,12 @@ namespace UI
 
       private void OnEnable()
       {
-         _playersPoints.OnPointChanged += ChangeValue;
+         _playersPoints.PointChanged += ChangeValue;
       }
       
       private void OnDisable()
       {
-         _playersPoints.OnPointChanged -= ChangeValue;
+         _playersPoints.PointChanged -= ChangeValue;
       }
    }
 }

@@ -15,12 +15,12 @@ namespace UI
 
       private void OnEnable()
       {
-         _playersMoney.OnMoneyChanged += ChangeValue;
+         _playersMoney.MoneyChanged += ChangeValue;
       }
       
       private void OnDisable()
       {
-         _playersMoney.OnMoneyChanged -= ChangeValue;
+         _playersMoney.MoneyChanged -= ChangeValue;
       }
    }
 }

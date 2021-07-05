@@ -22,7 +22,7 @@ namespace Spawners
             for (int i = 0; i < ObjectPool.Count; i++)
             {
                 ObjectPool[i] = Instantiate(ObjectPool[i], transform.position, Quaternion.Euler(180, 0, 0));
-                ObjectPool[i].GetComponent<EnemyShip>().OnShipDestroy += InvokeEvent;
+                ObjectPool[i].GetComponent<EnemyShip>().ShipDestroyed += InvokeEvent;
                 ObjectPool[i].SetActive(false);
             }
             base.Start();
@@ -33,7 +33,7 @@ namespace Spawners
             base.OnDisable();
             for (int i = 0; i < ObjectPool.Count; i++)
             {
-                ObjectPool[i].GetComponent<EnemyShip>().OnShipDestroy -= InvokeEvent;
+                ObjectPool[i].GetComponent<EnemyShip>().ShipDestroyed -= InvokeEvent;
             }
         }
 
