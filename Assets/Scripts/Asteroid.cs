@@ -25,10 +25,10 @@ public class Asteroid : MonoBehaviour
     private int _health;
     private Rigidbody2D _rigidbody;
     private int _scale;
-
-    public event UnityAction<int, int> OnAsteroidDestroyed; 
     
     public int Damage => _damage;
+    
+    public event UnityAction<int, int> OnAsteroidDestroyed;
 
     private void OnEnable()
     {

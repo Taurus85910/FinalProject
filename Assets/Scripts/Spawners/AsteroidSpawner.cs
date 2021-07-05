@@ -45,10 +45,10 @@ namespace Spawners
             {
                 for (int i = 0; i < Random.Range(_countBorders.x, _countBorders.y); i++)
                 {
-                    foreach (GameObject a in ObjectPool.Where(a => a.activeSelf == false))
+                    foreach (GameObject asteroid in ObjectPool.Where(asteroid => !asteroid.activeSelf))
                     {
-                        a.SetActive(true);
-                        a.transform.position = new Vector3(Random.Range(_xBorders.x, _xBorders.y), _spawnPosition.x, _spawnPosition.y);
+                        asteroid.SetActive(true);
+                        asteroid.transform.position = new Vector3(Random.Range(_xBorders.x, _xBorders.y), _spawnPosition.x, _spawnPosition.y);
                         break;
                     }
                 }

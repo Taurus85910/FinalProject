@@ -10,7 +10,6 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] private float _forcePower;
     
     public float ForcePower => _forcePower;
-
     public int Damage => _damage;
 
     public void UpgradeDamage(int damageVolume)

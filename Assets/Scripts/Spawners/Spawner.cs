@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Spawners
 {
-    public abstract class Spawner : MonoBehaviour
+    public abstract class Spawner: MonoBehaviour 
     {
         [SerializeField] protected List<GameObject> ObjectPool = new List<GameObject>();
         
@@ -16,12 +16,12 @@ namespace Spawners
         
         protected void OnEnable()
         {
-            Restart.OnRestartButtonClick += PoolRestart;
+            Restart.RestartButtonClicked += PoolRestart;
         }
 
         protected virtual void OnDisable()
         {
-            Restart.OnRestartButtonClick -= PoolRestart;
+            Restart.RestartButtonClicked -= PoolRestart;
         }
 
         protected virtual void Start()

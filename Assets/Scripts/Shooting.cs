@@ -13,15 +13,15 @@ public class Shooting : MonoBehaviour
     [SerializeField] private int _capacity;
     [SerializeField] private GameObject _tempContainer;
     
-    private readonly List<GameObject> _bulletPool = new List<GameObject>();
+    private readonly List<Bullet> _bulletPool = new List<Bullet>();
     private List<Transform> _shootPoints = new List<Transform>();
     
     public float ShotDelay => _shotDelay;
-    public int BulletDamage => _bulletPool[1].GetComponent<Bullet>().Damage;
+    public int BulletDamage => _bulletPool[1].Damage;
 
     public void UpgradeDamage(int upgradeVolume)
     {
-        _bulletPool.ForEach(bullet => bullet.GetComponent<Bullet>().UpgradeDamage(upgradeVolume));
+        _bulletPool.ForEach(bullet => bullet.UpgradeDamage(upgradeVolume));
     }
 
     public void UpgradeShotDelay(float shotDelayVolume)
@@ -31,20 +31,20 @@ public class Shooting : MonoBehaviour
 
     private void OnEnable()
     {
-        Restart.OnRestartButtonClick += PoolRestart;
+        Restart.RestartButtonClicked += PoolRestart;
         StartCoroutine(Shot());
     }
 
     private void OnDisable()
     {
-        Restart.OnRestartButtonClick -= PoolRestart;
+        Restart.RestartButtonClicked -= PoolRestart;
     }
 
     private void PoolRestart()
     {
         foreach (var bullet in _bulletPool)
         {
-            bullet.SetActive(false);
+            bullet.GameObject().SetActive(false);
         }
     }
 
@@ -55,7 +55,7 @@ public class Shooting : MonoBehaviour
         {
             GameObject temp = Instantiate(_bulletTemplate,gameObject.transform.position,Quaternion.identity,container.transform);
             temp.SetActive(false);
-            _bulletPool.Add(temp);
+            _bulletPool.Add(temp.GetComponent<Bullet>());
         }
         InitShotPoints();
     }
@@ -84,11 +84,11 @@ public class Shooting : MonoBehaviour
     
     private void PoolTaken(Transform transform)
     {
-        foreach (GameObject bullet in _bulletPool)
+        foreach (Bullet bullet in _bulletPool)
         {
-            if (bullet.activeSelf == false)
+            if (bullet.gameObject.activeSelf == false)
             {
-                bullet.SetActive(true);
+                bullet.gameObject.SetActive(true);
                 bullet.transform.position = transform.position;
                 break;
             }
