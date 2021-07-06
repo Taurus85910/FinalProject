@@ -29,7 +29,7 @@ namespace Spawners
 
         
         
-        protected void InvokeEvent(int points,int money)
+        protected void OnAsteroidDestroyed(int points,int money)
         {
             ElementDestroyed?.Invoke(points,money);
         }
